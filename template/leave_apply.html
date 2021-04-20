@@ -1,0 +1,165 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Leave Application</title>
+<style>
+	button{
+		background-color:#009cdc;
+		font-size: 30px; 
+		width: 120px;
+		height: 40px;
+	}
+	td, th{
+		color: cornsilk;
+	}
+	
+</style>
+<script language="javascript">
+	function Days() {
+		var d1 = document.getElementById("id_from_date").value;
+		var milliSecFord1=Date.parse(d1);
+		var d2 = document.getElementById("id_to_date").value;
+		var milliSecFord2=Date.parse(d2);
+		var difference_milliSec= milliSecFord2-milliSecFord1 ;
+		var days = difference_milliSec /(24 * 3600 * 1000);
+		document.getElementById("id_days").value = days;
+		}
+</script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travello template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'index/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/contact.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/contact_responsive.css' %}">
+</head>
+<body style="background-image: url({% static 'index/images/background.jpg' %})">
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+							<div style="position: relative; top:-30px; left:-100px;"><a href="index.html"><img src="{% static 'index/images/leave.png' %}" alt=""></a></div>
+							<!-- Hamburger -->
+
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<!-- Home -->
+
+
+		<!-- Contact -->
+
+	<div style=" background-color:rgba(0,0,0,0.5); position: relative; left:30px; right: 30px; top: 130px; height: 600px; width: 1470px;">
+		<div class="row">
+			<!-- Get in touch -->
+			<div style="position: relative; left:80px;" class="col-lg-6">	
+				<div class="contact_content">
+					<div class="contact_list">
+						<table style="font-size: 20px;">
+							<tr> <h3 style="color: cornsilk;"> Balance Leave </h3></tr>
+							<tr>
+								<th>Sick Leave: </th>
+								<td>{{ allocated.sick_leave }}</td>
+							</tr>
+							<tr>
+								<th>Annual Leave: </th>
+								<td>{{ allocated.annual_leave }}</td>
+							</tr>
+							<tr>
+								<th>Casual Leave: </th>
+								<td>{{ allocated.casual_leave }}</td>
+							</tr>
+							<tr>
+								<th>paternity Leave: </th>
+								<td>{{ allocated.paternity_leave }}</td>
+							</tr>
+							<tr>
+								<th>Maternity Leave: </th>
+								<td>{{ allocated.maternity_leave }}</td>
+							</tr>
+							
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div style="position: relative; right:80px;" class="col-lg-6">
+				<div class="contact_form_container">
+					<form method="POST" id="contact_form" class="contact_form">
+						{% csrf_token%}
+						<label style="color: cornsilk; font-size:large; ">Leave Type</label>
+						<div style="margin-bottom: 18px"> {{ form.leave_type }}<div class="input_border"></div></div>
+						<div class="row">
+							<div class="col-lg-6" style="margin-bottom: 18px">
+								<label style="color: cornsilk; font-size:large; ">From</label>
+								<div>{{ form.from_date }}<div class="input_border"></div></div>
+								<div>{{ form.errors }}</div>
+							</div>
+							<div class="col-lg-6" style="margin-bottom: 18px">
+								<label style="color: cornsilk; font-size:large; ">To</label>
+								<div>{{ form.to_date }} <div class="input_border"></div></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6" style="margin-bottom: 18px">
+								<div>{{ form.days }}<div class="input_border"></div></div>
+							</div>
+							<div class="col-lg-6" style="margin-bottom: 18px">
+								<div>{{ form.emergency_contact }} <div class="input_border"></div></div>
+							</div>
+						</div>
+						<div>{{ form.reason }} <div class="input_border" style="bottom:3px"></div></div>
+						<br>
+						<div>
+							<button>Apply</button>
+						</div>
+					</form>
+					<div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'index/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'index/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'index/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'index/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="{% static 'index/js/contact.js' %}"></script>
+</html>

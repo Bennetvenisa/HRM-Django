@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banknote_Authenticate</title>
+</head>
+<body>
+    <h1>Hi, Welcome to Bank Note Authentication</h1>
+    <h3> please enter the following details</h3>
+    <form method="POST" class="register-form" id="register-form">
+        {% csrf_token %}
+        <label>Variance:</label>
+        <input type="text" name="variance" id="variane" placeholder="Variance" required/> 
+        <br>
+        <label>Skewness:</label>
+        <input type="text" name="skewness" id="skewness" placeholder="Skewness" required/>
+        <br>
+        <label>Curtosis:</label>
+        <input type="text" name="curtosis" id="curtosis" placeholder="Curtosis" required/>
+        <br>
+        <label>Entropy:</label>
+        <input type="text" name="entropy" id="entropy" placeholder="Entropy" required/>
+        <br>
+        <input type="submit">
+        
+        {% for messages in messages%}
+        {{messages}}
+        {% endfor %}
+
+    </form>
+
+</body>
+</html>

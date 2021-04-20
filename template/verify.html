@@ -1,0 +1,160 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Registration</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'Regis/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'Regis/css/style.css' %}">
+</head>
+<body style="background-image:url({% static 'Regis/images/background.jpg' %})">
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static 'Regis/images/signup-img.jfif' %}" alt="">
+                </div>
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h2>Employee Verification</h2>
+                        <div class="form-radio">
+                            <label for="salutation" class="radio-label">Salutation :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="salutation" id="Mr" value="Mr" checked>
+                                <label for="Mr">Mr</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="salutation" id="Mrs" value="Mrs" checked>
+                                <label for="Mrs">Mrs</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="salutation" id="Ms" value="Ms" checked>
+                                <label for="Ms">Ms</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="first_name" id="first_name" placeholder="{{ user.first_name }}" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" id="last_name" placeholder="{{ user.last_name }}" readonly/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="date" name="birth_date" id="birth_date" onchange="ageCount()">
+                            </div>
+                            <div>
+                                <label for="joining_date">Date of Birth</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text " name="age" id="age" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="designation" id="designation", placeholder="{{ user.userprofile.designation}}" readonly/>
+                            </div>
+                        </div>
+                        <div class="form-radio">
+                            <label for="gender" class="radio-label">Gender :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="male" value="male" checked>
+                                <label for="male">Male</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="female" value="female"checked>
+                                <label for="female">Female</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" id="address" placeholder="Address" required/>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">State :</label>
+                                <div style="background-color:#FFFFFF;" class="form-select">
+                                    <select name="state" id="state">
+                                        <option value=""></option>
+                                        <option value="Maharastra">Maharastra</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Tamilnadu">Tamilnadu</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City :</label>
+                                <div style="background-color:#FFFFFF;" class="form-select">
+                                    <select  name="city" id="city">
+                                        <option value=""></option>
+                                        <option value="Mumbai">Mumbai</option>
+                                        <option value="Bangalore">Bangalore</option>
+                                        <option value="Chennai">Chennai</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="pincode" id="pincode" placeholder="pincode" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" placeholder="{{ user.email }}" readonly/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="contact1" id="contact1" placeholder="Contact no." required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="contact2" id="contact2" placeholder="Alternate contact no." required/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input style="color:#FFFFFF;" type="file" name="document" id="document">
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
+                            <input type="submit" value="Submit" class="submit" name="submit" id="submit" />
+                        </div>
+                        <div>
+                            {% for messages in messages %}
+                            <h3> {{messages}} </h3>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'Regis/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Regis/js/main.js' %}"></script>
+    <script src="{% static 'Regis/js/agecalculator.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

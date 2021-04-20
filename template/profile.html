@@ -1,0 +1,227 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Contact</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travello template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'index/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/contact.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'index/styles/contact_responsive.css' %}">
+</head>
+<body style="background-image: url({% static 'index/images/background.jpg' %})">
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+							<div class="profile_image"><a href="index.html"><img src="{{ employee.image.url }}" alt=""></a></div>
+							<!-- Hamburger -->
+
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="background_image" style="background-color:#292929 ; "></div>
+	</div>
+
+		<!-- Contact -->
+
+	<div class="contact">
+		<div class="container">
+			<div class="row">
+
+				<!-- Get in touch -->
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div class="contact_title">{{ employee.salutation }}. {{ employee.first_name }} {{ employee.middle_name }} {{ employee.last_name }}</div>
+						<div class="contact_list">
+							<ul>
+								<li>
+									<div>designation: </div>
+									<div>{{ employee.designation }}</div>
+								</li>
+								<li>
+									<div>email:</div>
+									<div>{{ employee.email }}</div>
+								</li>
+								<li>
+									<div>contact:</div>
+									<div>{{ employee.contact1 }}</div>
+								</li>
+								<li>
+									<div style= "width:150px;">alternate contact</div>
+									<div>{{ employee.contact2 }}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div style= "position: relative; top:40px;" class="contact_list">
+							<ul>
+								<li>
+									<div style= "width:180px;">Date of Joining:</div>
+									<div> {{ user.userprofile.joining_date }}</div>
+								</li>
+								<li>
+									<div>Gender:</div>
+									<div>{{ employee.gender }}</div>
+								</li>
+								<li>
+									<div>Age:</div>
+									<div>{{ employee.age }}</div>
+								</li>
+								<li>
+									<div style= "width:180px;">Date of birth:</div>
+									<div>{{ employee.birth_date }}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Contact Form -->
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div style= "position: relative; top:40px;" class="contact_list">
+							<ul>
+								<li>
+									<div> Address: </div>
+									<div>{{ employee.address }}</div>
+								</li>
+								<li>
+									<div>city:</div>
+									<div>{{ employee.city }}</div>
+								</li>
+								<li>
+									<div>State:</div>
+									<div>{{ employee.state }}</div>
+								</li>
+								<li>
+									<div>pincode:</div>
+									<div>{{ employee.pincode}}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="contact">
+		<div class="container">
+			<div class="row">
+
+				<!-- Get in touch -->
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div class="contact_title">Educational Qualification</div>
+						<div class="contact_list">
+							<ul>
+								<li>
+									<div style= "width:150px;" >Highest Degree:</div>
+									<div>{{ user.employee_edu.highest_degree }}</div>
+								</li>
+								<li>
+									<div style= "width:130px;">Degree Type:</div>
+									<div>{{ user.employee_edu.degree_type }}</div>
+								</li>
+								<li>
+									<div style= "width:130px;">Specialization</div>
+									<div>{{ user.employee_edu.specialization }}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div style= "position: relative; top:40px;" class="contact_list">
+							<ul>
+								<li>
+									<div>College</div>
+									<div> {{ user.employee_edu.college  }}</div>
+								</li>
+								<li>
+									<div>University</div>
+									<div>{{ user.employee_edu.university  }}</div>
+								</li>
+								<li>
+									<div style= "width:150px;">Program Type</div>
+									<div>{{ user.employee_edu.program_type }}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Contact Form -->
+				<div style="background-color:rgba(0,0,0,0.5);" class="col-lg-4">
+					<div class="contact_content">
+						<div style= "position: relative; top:40px;" class="contact_list">
+							<ul>
+								<li>
+									<div style= "width:120px;"> Graduated on: </div>
+									<div>{{ user.employee_edu.graduated_on  }}</div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	</footer>
+</div>
+
+<script src="{% static 'index/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'index/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'index/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'index/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'index/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'index/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="{% static 'index/js/contact.js' %}"></script>
+</body>
+</html>

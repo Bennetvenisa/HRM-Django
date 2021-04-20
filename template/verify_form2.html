@@ -1,0 +1,122 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Registration</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'Regis/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'Regis/css/style.css' %}">
+</head>
+<body style="background-image:url({% static 'Regis/images/background.jpg' %})">
+
+    <div class="main">
+        <div class="container" style="column-count:2    ; height: 500px;">
+            <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Educational qualification</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="highest_degree">Highest Degree:</label>
+                        <div class="form-select" style="background:#FFFFFF;" >
+                            <select name="highest_degree" id="highest_degree">
+                                <option value=""> </option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelors">Bachelors</option>
+                                <option value="masters">Masters</option>
+                                <option value="Phd">Phd</option>
+                            </select>
+                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="degree_type">Type of Degree:</label>
+                        <div class="form-select" style="background:#FFFFFF;" >
+                            <select name="degree_type" id="degree_type">
+                                <option value=""> </option>
+                                <option value="engineering">Engineering</option>
+                                <option value="science">Science</option>
+                                <option value="economics">Economics</option>
+                                <option value="computer">Computer</option>
+                            </select>
+                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="specialization" id="specialization" placeholder="Specialization">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="college" id="college" placeholder="College">
+                    </div>
+                </div>
+
+
+                <div style="position: relative; top:190px;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="university" id="university" placeholder="University">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="program_type">Program Type:</label>
+                            <div class="form-select" style="background:#FFFFFF;" >
+                                <select name="program_type" id="program_type">
+                                    <option value=""> </option>
+                                    <option value="full time">Full Time</option>
+                                    <option value="part time">Part Time</option>
+                                    <option value="distance education">Distance Education</option> 
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-radio" >
+                        <label for="graduated" class="radio-label">Graduated:</label>
+                        <div class="form-radio-item">
+                            <input type="radio" name="graduated" id="yes" value="yes" checked>
+                            <label for="yes">Yes</label>
+                            <span class="check"></span>
+                        </div>
+                        <div class="form-radio-item">
+                            <input type="radio" name="graduated" id="no" value="no" checked>
+                            <label for="no">No</label>
+                            <span class="check"></span>
+                        </div>
+                    </div>
+                
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="date" name="graduated_on" id="graduated_on" placeholder="graduated_on">
+                        </div>
+                        <div style= "position:absolute; top:210px; right:120px;">
+                            <label for="joining_date">Graduated on</label>
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
+                        <input type="submit" value="Submit" class="submit" name="submit" id="submit" />
+                    </div>
+                </div>
+            </div>
+        </form>   
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'Regis/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Regis/js/main.js' %}"></script>
+    <script src="{% static 'Regis/js/agecalculator.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
